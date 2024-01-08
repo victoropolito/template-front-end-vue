@@ -1,122 +1,72 @@
 <template>
-  <div>
+  <a-layout>
     <HomeHeader />
-    <div>
-      <a-button class="task-button" @click="showCreateTaskModal">
-        Criar Tarefa
-      </a-button>
-      <task-form :is-visible="isCreateTaskModalVisible" @create-task="createTask" />
-    </div>
-    <div class="columns">
-      <TaskComponent title="Não Iniciado" :task="unstartedTasks" />
-      <TaskComponent title="Em Progresso" :task="inProgressTasks" />
-      <TaskComponent title="Completo" :task="completedTasks" />
-    </div>
-  </div>
+    <a-layout-content style="padding: 24px">
+      <ColumnsComponent>
+        <template v-slot:not-started>
+          <TaskComponent
+            v-for="task in tasks.filter(t => t.status === 'Not Started')"
+            :key="task.id"
+            :title="task.title"
+            :description="task.description"
+            :dueDate="task.dueDate"
+            :type="task.type"
+            :responsible="task.responsible"
+          />
+        </template>
+        <template v-slot:in-progress>
+          <TaskComponent
+            v-for="task in tasks.filter(t => t.status === 'In Progress')"
+            :key="task.id"
+            :title="task.title"
+            :description="task.description"
+            :dueDate="task.dueDate"
+            :type="task.type"
+            :responsible="task.responsible"
+          />
+        </template>
+        <template v-slot:completed>
+          <TaskComponent
+            v-for="task in tasks.filter(t => t.status === 'Completed')"
+            :key="task.id"
+            :title="task.title"
+            :description="task.description"
+            :dueDate="task.dueDate"
+            :type="task.type"
+            :responsible="task.responsible"
+          />
+        </template>
+      </ColumnsComponent>
+    </a-layout-content>
+  </a-layout>
 </template>
 
 <script>
-import { ref } from "vue"
-import { notification } from "ant-design-vue"
-import TaskForm from "@/components/TaskForm.vue"
 import HomeHeader from "@/components/HomeHeader.vue"
 import TaskComponent from "@/components/TaskComponent.vue"
+import ColumnsComponent from "@/components/ColumnsComponent.vue"
 
 export default {
   components: {
     HomeHeader,
+    ColumnsComponent,
     TaskComponent,
-    TaskForm
-  },
-  setup() {
-    const isCreateTaskModalVisible = ref(false);
-    const newTask = ref({
-      title: "",
-      description: "",
-      dueDate: null,
-      type: "",
-      assignee: "",
-    });
-
-    const createTask = () => {
-      // Aqui você pode adicionar a lógica para criar a tarefa
-      // Deve incluir a adição da nova tarefa à coluna "Não Iniciado"
-
-      // Exemplo de notificação de sucesso
-      notification.success({
-        message: "Tarefa Criada",
-        description: `A tarefa "${newTask.value.title}" foi criada com sucesso.`,
-      });
-
-      // Limpar o formulário e fechar o modal
-      newTask.value = {
-        title: "",
-        description: "",
-        dueDate: null,
-        type: "",
-        assignee: "",
-      };
-      isCreateTaskModalVisible.value = false;
-    };
-
-    const showCreateTaskModal = () => {
-      isCreateTaskModalVisible.value = true;
-    };
-
-    return {
-      isCreateTaskModalVisible,
-      newTask,
-      showCreateTaskModal,
-      createTask,
-    };
   },
   data() {
     return {
-      unstartedTasks: [
+      tasks: [
         {
           id: 1,
-          title: "Tarefa 1 - Não Iniciada",
-          description: "Descrição da Tarefa 1.",
-          assignee: "Usuário 1",
-          dueDate: "2023-11-01",
-          status: "Não"
+          title: "Task 1",
+          description: "Description of Task 1",
+          dueDate: "2024-01-15",
+          type: "Bug",
+          responsible: "John Doe",
+          status: "Not Started",
         },
-      ],
-      inProgressTasks: [
-        {
-          id: 2,
-          title: "Tarefa 2 - Em Progresso",
-          description: "Descrição da Tarefa 2.",
-          assignee: "Usuário 2",
-          dueDate: "2023-11-05",
-        },
-      ],
-      completedTasks: [
-        {
-          id: 3,
-          title: "Tarefa 3 - Completa",
-          description: "Descrição da Tarefa 3.",
-          assignee: "Usuário 3",
-          dueDate: "2023-10-30",
-        },
+        // Add more tasks as needed
       ],
     };
   },
 };
 </script>
-
-<style>
-.task-button {
-  background-color: #1890ff;
-  color: white;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-}
-
-.columns {
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-}
-</style>

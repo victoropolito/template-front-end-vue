@@ -1,40 +1,23 @@
 <template>
-  <div class="task-column">
-    <div class="column-title">
-      {{ title }}
-    </div>
-    <div class="tasks">
-      <TaskComponent v-for="task in tasks" :key="task.id" :task="task" />
-    </div>
-  </div>
+  <a-row gutter="16">
+    <a-col :span="8">
+      <a-card title="Não Iniciado">
+        <slot name="not-started"></slot>
+      </a-card>
+    </a-col>
+    <a-col :span="8">
+      <a-card title="Em Progresso">
+        <slot name="in-progress"></slot>
+      </a-card>
+    </a-col>
+    <a-col :span="8">
+      <a-card title="Concluído">
+        <slot name="completed"></slot>
+      </a-card>
+    </a-col>
+  </a-row>
 </template>
 
 <script>
-export default {
-  props: {
-    title: String,
-    tasks: Array,
-  },
-  methods: {
-    moveTaskToInProgress(task) {
-      // TO-DO DRAG TASKS
-    },
-  },
-};
+export default {};
 </script>
-
-<style scoped>
-.task-column {
-  background-color: #f0f2f5;
-  padding: 16px;
-  border: 1px solid #e8e8e8;
-  border-radius: 4px;
-  margin: 16px;
-  min-width: 400px;
-}
-
-.column-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-</style>
