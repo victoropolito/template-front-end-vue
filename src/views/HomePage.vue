@@ -37,6 +37,10 @@
           />
         </template>
       </ColumnsComponent>
+      <div>
+        <h1>Cards</h1>
+        <cards-list></cards-list>
+      </div>
     </a-layout-content>
   </a-layout>
 </template>
@@ -45,12 +49,14 @@
 import HomeHeader from "@/components/HomeHeader.vue"
 import TaskComponent from "@/components/TaskComponent.vue"
 import ColumnsComponent from "@/components/ColumnsComponent.vue"
+import CardsList from '@/components/CardsList.vue'
 
 export default {
   components: {
     HomeHeader,
     ColumnsComponent,
     TaskComponent,
+    CardsList
   },
   data() {
     return {

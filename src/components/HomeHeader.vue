@@ -12,13 +12,20 @@
         </div>
         <div class="right">
           <div class="user-info">
-            <!-- Espaço para avatar -->
-            <a-avatar :src="user.avatar" :size="40" class="avatar" />
-            <!-- Nome e e-mail do usuário separados verticalmente -->
-            <div class="user-details">
-              <div>{{ user.name }}</div>
-              <div>{{ user.email }}</div>
-            </div>
+            <a-space :size="16" wrap>
+              <a-avatar :size="40" src="https://www.antdv.com/assets/logo.1ef800a8.svg">
+                <template #icon>
+                  <UserOutlined />
+                </template>
+              </a-avatar>
+              <template #icon>
+                <UserOutlined />
+              </template>
+              <div class="user-details">
+                <div>{{ user.name }}</div>
+                <div>{{ user.email }}</div>
+              </div>
+            </a-space>
           </div>
         </div>
       </div>
@@ -27,13 +34,17 @@
 </template>
 
 <script>
+import { UserOutlined } from '@ant-design/icons-vue'
+
 export default {
+  components: {
+    UserOutlined
+  },
   data() {
     return {
       searchInput: "",
       user: {
-        avatar:
-          "file:///C:/Users/Victor/Documents/UFOP/TCC_I/template-front/template-front-end-vue/src/assets/static/profile-photo.jpg",
+        avatar: '',
         name: "Victor Polito",
         email: "victor.polito@aluno.ufop.edu.br",
       },
