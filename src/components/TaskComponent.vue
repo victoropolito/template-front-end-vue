@@ -1,5 +1,8 @@
 <template>
-  <a-card :title="title" style="width: 300px; margin-bottom: 16px">
+  <a-card
+    :title="title"
+    style="width: 300px; margin-bottom: 16px"
+  >
     <p>{{ description }}</p>
     <p>Data de Entrega: {{ dueDate }}</p>
     <p>Tipo: {{ type }}</p>

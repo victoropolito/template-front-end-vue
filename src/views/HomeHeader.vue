@@ -4,16 +4,29 @@
       <div class="header">
         <div class="left">
           <!-- Espaço para a logo -->
-          <img src="@/assets/logo.png" alt="Logo" class="logo" />
+          <img
+            src="@/assets/logo.png"
+            alt="Logo"
+            class="logo"
+          >
         </div>
         <div class="center">
           <!-- Input de pesquisa -->
-          <a-input v-model="searchInput" placeholder="Pesquisar..." />
+          <a-input
+            v-model="searchInput"
+            placeholder="Pesquisar..."
+          />
         </div>
         <div class="right">
           <div class="user-info">
-            <a-space :size="16" wrap>
-              <a-avatar :size="40" src="https://www.antdv.com/assets/logo.1ef800a8.svg">
+            <a-space
+              :size="16"
+              wrap
+            >
+              <a-avatar
+                :size="40"
+                src="https://www.antdv.com/assets/logo.1ef800a8.svg"
+              >
                 <template #icon>
                   <UserOutlined />
                 </template>

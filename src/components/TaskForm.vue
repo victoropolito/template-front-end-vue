@@ -1,5 +1,9 @@
 <template>
-  <a-modal :visible="isVisible" title="Criar Tarefa" @ok="onCreateTask">
+  <a-modal
+    :visible="isVisible"
+    title="Criar Tarefa"
+    @ok="onCreateTask"
+  >
     <a-form>
       <a-form-item label="Título">
         <a-input v-model="formData.title" />
@@ -12,8 +16,12 @@
       </a-form-item>
       <a-form-item label="Tipo">
         <a-select v-model="formData.type">
-          <a-select-option value="bug">Bug</a-select-option>
-          <a-select-option value="melhoria">Melhoria</a-select-option>
+          <a-select-option value="bug">
+            Bug
+          </a-select-option>
+          <a-select-option value="melhoria">
+            Melhoria
+          </a-select-option>
           <!-- Adicione mais opções, se necessário -->
         </a-select>
       </a-form-item>
