@@ -2,8 +2,7 @@
   <div class="components-page-header-demo-responsive" style="border: 1px solid rgb(235, 237, 240)">
     <a-page-header title="Projeto A" sub-title="Projeto Chameleon" @back="redirectPage">
       <template #extra>
-        <a-button key="2">Operation</a-button>
-        <a-button key="1" type="primary">Nova task</a-button>
+        <Modal/>
       </template>
       <template #footer>
         <a-tabs>
@@ -49,7 +48,12 @@
 </template>
 
 <script>
+import Modal from '@/components/Modals/Modal.vue'
+
 export default {
+  components: {
+    Modal
+  },
   methods: {
     redirectPage() {
       // () => $router.go(-1)
