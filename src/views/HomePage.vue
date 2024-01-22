@@ -21,5 +21,5 @@ export default {
     Board,
     CardsList
   },
-};
+}
 </script>
