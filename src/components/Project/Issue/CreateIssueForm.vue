@@ -9,7 +9,7 @@
         <a-textarea name="description" v-model:value="newCard.description"/>
       </a-form-item>
       <a-form-item label="Responsável">
-        <a-input v-model:value="newCard.user_id" />
+        <a-input v-model:value="userIdToName" />
       </a-form-item>
     </a-form>
   </div>
@@ -30,9 +30,14 @@ export default {
       newCard: {
         title: '',
         description: '',
-        user_id: '',
+        user_id: '87898254-f9a5-4dd2-88c9-3d58c50a029b',
         status: 'BACKLOG'
       },
+    }
+  },
+  computed: {
+    userIdToName() {
+      return this.newCard.user_id === null ? null : 'Victor Polito'
     }
   },
   watch: {

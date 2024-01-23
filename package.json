@@ -12,6 +12,7 @@
     "axios": "^1.6.5",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
+    "vuedraggable": "^4.1.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

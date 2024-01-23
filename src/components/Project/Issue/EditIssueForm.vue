@@ -1,7 +1,5 @@
 <template>
   <div>
-    <a-page-header title="Editar Card"/>
-    <a-button type="">{{ this.card.id }}</a-button>
     <a-form>
       <a-form-item label="Título">
         <a-input name="title" v-model:value="editCard.title" />

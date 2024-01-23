@@ -44,15 +44,17 @@
         </div> -->
       </div>
     </a-page-header>
+    <TesteHover />
   </div>
 </template>
 
 <script>
 import Modal from '@/components/Modals/Modal.vue'
+import TesteHover from '@/components/TesteHover.vue'
 
 export default {
   components: {
-    Modal
+    Modal, TesteHover
   },
   methods: {
     redirectPage() {

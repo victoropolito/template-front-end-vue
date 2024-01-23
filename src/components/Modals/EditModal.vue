@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <EllipsisOutlined @click="showModal" />
+  <a-space wrap>
+    <a-button type="link" @click="showModal">
+      <EllipsisOutlined />
+    </a-button>
     <a-modal
     v-model:open="open"
     :confirm-loading="confirmLoading"
     @ok="handleOk"
+    title="Editar Card"
     >
-      <a-button type="primary" @click="teste">
-        teste
-      </a-button>
       <EditIssueForm @change="changeForm" v-bind:card="card"/>
     </a-modal>
-  </div>
+  </a-space>
 </template>
 
 <script>

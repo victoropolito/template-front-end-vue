@@ -7,9 +7,10 @@
             {{ cards.length }}
           </template>
           <a-card v-for="card in cards" :key="card.id" :bordered="false" size="small">
-            <a-card v-if="card.status === 'BACKLOG'">
+            <a-card v-if="card.status === 'BACKLOG'" hoverable >
               <template #actions>
                 <EditModal v-bind:card="card"/>
+                <DeleteModal v-bind:card="card"/>
               </template>
               <a-card-meta >
                 <template #title>
@@ -34,9 +35,10 @@
             {{ cards.length }}
           </template>
           <a-card v-for="card in cards" :key="card.id" :bordered="false" size="small">
-            <a-card v-if="card.status === 'IN PROGRESS'">
+            <a-card v-if="card.status === 'IN PROGRESS'" hoverable>
               <template #actions>
                 <EditModal v-bind:card="card" />
+                <DeleteModal v-bind:card="card"/>
               </template>
               <a-card-meta >
                 <template #title>
@@ -61,9 +63,10 @@
             {{ cards.length }}
           </template>
           <a-card v-for="card in cards" :key="card.id" :bordered="false" size="small">
-            <a-card v-if="card.status === 'CONCLUDED'">
+            <a-card v-if="card.status === 'CONCLUDED'" hoverable>
               <template #actions>
                 <EditModal v-bind:card="card" />
+                <DeleteModal v-bind:card="card"/>
               </template>
               <a-card-meta >
                 <template #title>
@@ -90,10 +93,12 @@
 <script>
 import api from '@/services/api.js'
 import EditModal from '@/components/Modals/EditModal.vue'
+import DeleteModal from '@/components/Modals/DeleteModal.vue'
 
 export default {
   components: {
     EditModal,
+    DeleteModal
   },
   props: {
     title: {
