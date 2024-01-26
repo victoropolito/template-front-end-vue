@@ -2,7 +2,7 @@
   <a-layout>
     <HomeHeader />
     <Board />
-    <a-layout-content style="padding: 24px">
+    <a-layout-content style="padding: 24px 40px">
       <div>
         <cards-list />
       </div>
