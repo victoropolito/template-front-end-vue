@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import api from "@/services/api.js"
+// import api from "@/services/api.js"
 import { DeleteOutlined  } from '@ant-design/icons-vue'
 
 export default {
@@ -36,13 +36,13 @@ export default {
   },
   methods: {
     async deleteCard() {
-      const id = this.card.id
+      const id = this.card.id;
 
       try {
-        const response = await api.delete(`/card/${id}`, this.form);
-        return response.data;
+        await this.$store.dispatch('deleteCardStore', id);
+        return true;
       } catch (error) {
-        console.error("Erro ao deletar este card:", error);
+        console.error('Error deleting card:', error);
         throw error;
       }
     },
@@ -51,13 +51,13 @@ export default {
     },
     async handleOk() {
       this.confirmLoading = true;
-
       try {
         await this.deleteCard();
         this.confirmLoading = false;
         this.open = false;
+        this.$emit('card-updated');
       } catch (error) {
-        console.error("Erro ao deletar o card!", error);
+        console.error(error);
       }
 
       console.log("Excluiu!", this.form);

@@ -68,7 +68,7 @@ export default {
 
 <style scoped>
 .header {
-  background-color: #1890ff;
+  background-color: #F6F7F9;
   color: white;
   padding: 16px;
   display: flex;

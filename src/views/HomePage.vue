@@ -4,7 +4,7 @@
     <Board />
     <a-layout-content style="padding: 24px 40px">
       <div>
-        <cards-list />
+        <cards-list @card-updated="fetchCards"/>
       </div>
     </a-layout-content>
   </a-layout>
@@ -20,6 +20,12 @@ export default {
     HomeHeader,
     Board,
     CardsList
+  },
+  methods: {
+    fetchCards() {
+      // Call the fetchCards method in CardsList component
+      this.$refs.cardsList.fetchCards();
+    },
   },
 }
 </script>

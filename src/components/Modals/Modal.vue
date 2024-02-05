@@ -13,7 +13,7 @@
 
 <script>
 import CreateIssueForm from "@/components/Project/Issue/CreateIssueForm.vue";
-import api from "@/services/api.js";
+// import cardService from "@/services/cardService.js";
 
 export default {
   components: {
@@ -29,11 +29,12 @@ export default {
   methods: {
     async createCard() {
       const user_id = "87898254-f9a5-4dd2-88c9-3d58c50a029b";
+      
       try {
-        const response = await api.post(`/card/${user_id}`, this.form);
-        return response.data;
+        await this.$store.dispatch('createCardStore', { userId: user_id, cardForm: this.form });
+        return true;
       } catch (error) {
-        console.error("Erro ao criar um novo card:", error);
+        console.error('Error deleting card:', error);
         throw error;
       }
     },
@@ -47,18 +48,18 @@ export default {
         await this.createCard();
         this.confirmLoading = false;
         this.open = false;
+        this.$emit('card-updated');
       } catch (error) {
-        console.error("Erro ao criar card!", error);
+        console.error('Error creating card:', error);
       }
 
-      console.log("Salvou!", this.form);
+      console.log('Saved!', this.form);
     },
     changeForm(formObject) {
       if (formObject.type === "change") {
         return
       }
       this.form = formObject
-      console.log(this.form)
     },
   },
 };

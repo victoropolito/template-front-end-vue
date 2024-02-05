@@ -4,10 +4,10 @@
       <EllipsisOutlined />
     </a-button>
     <a-modal
-    v-model:open="open"
-    :confirm-loading="confirmLoading"
-    @ok="handleOk"
-    title="Editar Card"
+      v-model:open="open"
+      :confirm-loading="confirmLoading"
+      @ok="handleOk"
+      title="Editar Card"
     >
       <EditIssueForm @change="changeForm" v-bind:card="card"/>
     </a-modal>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import api from "@/services/api.js";
+// import api from "@/services/api.js";
 import EditIssueForm from "@/components/Project/Issue/EditIssueForm.vue";
 import { EllipsisOutlined } from "@ant-design/icons-vue";
 
@@ -38,13 +38,13 @@ export default {
   },
   methods: {
     async editCard() {
-      const id = this.card.id
+      const id = this.card.id;
 
       try {
-        const response = await api.patch(`/card/${id}`, this.form);
-        return response.data;
+        await this.$store.dispatch('editCard', { cardId: id, updatedCardData: this.form });
+        return true;
       } catch (error) {
-        console.error("Erro ao editar este card:", error);
+        console.error('Error editing card:', error);
         throw error;
       }
     },
@@ -58,11 +58,10 @@ export default {
         await this.editCard();
         this.confirmLoading = false;
         this.open = false;
+        this.$emit('card-updated');
       } catch (error) {
-        console.error("Erro ao editar card!", error);
+        console.error('Error editing/deleting card:', error);
       }
-
-      console.log("Salvou!", this.form);
     },
     changeForm(formObject) {
       if (formObject.type === "change") {
