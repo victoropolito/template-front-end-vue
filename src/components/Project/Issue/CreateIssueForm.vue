@@ -2,13 +2,13 @@
   <div>
     <a-page-header title="Projeto Chameleon" sub-title="Novo Card"/>
     <a-form>
-      <a-form-item label="Título">
+      <a-form-item label="Título" :rules="[{ required: true, message: 'Por favor, insira o título' }]">
         <a-input name="title" v-model:value="newCard.title" />
       </a-form-item>
-      <a-form-item label="Descrição">
+      <a-form-item label="Descrição" :rules="[{ required: true, message: 'Por favor, insira a descrição' }]">
         <a-textarea name="description" v-model:value="newCard.description"/>
       </a-form-item>
-      <a-form-item label="Responsável">
+      <a-form-item label="Responsável" :rules="[{ required: true, message: 'Por favor, selecione o responsável' }]">
         <a-input v-model:value="userIdToName" />
       </a-form-item>
     </a-form>
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     form: {

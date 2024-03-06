@@ -1,19 +1,19 @@
 <template>
   <div>
-    <a-button type="primary" @click="showModal">Nova task</a-button>
+    <a-button type="primary" size="large" @click="showModal">Nova task</a-button>
     <a-modal
       v-model:open="open"
       :confirm-loading="confirmLoading"
+      :ok-button-props="{disabled: !formValid}"
       @ok="handleOk"
     >
-      <create-issue-form @change="changeForm" />
+      <create-issue-form @change="changeForm" :formValid="formValid" /> <!-- Passando o estado de validade do formulário para o componente filho -->
     </a-modal>
   </div>
 </template>
 
 <script>
 import CreateIssueForm from "@/components/Project/Issue/CreateIssueForm.vue";
-// import cardService from "@/services/cardService.js";
 
 export default {
   components: {
@@ -24,6 +24,7 @@ export default {
       open: false,
       confirmLoading: false,
       form: {},
+      formValid: false,
     };
   },
   methods: {
@@ -52,14 +53,20 @@ export default {
       } catch (error) {
         console.error('Error creating card:', error);
       }
-
+      this.form.title = ''
+      this.form.description = ''
       console.log('Saved!', this.form);
     },
     changeForm(formObject) {
       if (formObject.type === "change") {
         return
       }
-      this.form = formObject
+      this.form = formObject;
+      this.checkFormValidity();
+    },
+    checkFormValidity() {
+      // Verifica se todos os campos obrigatórios estão preenchidos
+      this.formValid = Object.values(this.form).every(value => !!value);
     },
   },
 };

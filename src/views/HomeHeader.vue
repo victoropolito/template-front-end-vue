@@ -11,10 +11,12 @@
           >
         </div>
         <div class="center">
-          <!-- Input de pesquisa -->
-          <a-input
-            v-model="searchInput"
+          <!-- Input de pesquisa com ícone de lupa -->
+          <a-input-search
+            v-model:value="value"
             placeholder="Pesquisar..."
+            style="width: 300px"
+            @search="onSearch"
           />
         </div>
         <div class="right">
@@ -35,8 +37,8 @@
                 <UserOutlined />
               </template>
               <div class="user-details">
-                <div>{{ user.name }}</div>
-                <div>{{ user.email }}</div>
+                <div class="user-details-name">{{ user.name }}</div>
+                <div class="user-details-email">{{ user.email }}</div>
               </div>
             </a-space>
           </div>
@@ -51,11 +53,11 @@ import { UserOutlined } from '@ant-design/icons-vue'
 
 export default {
   components: {
-    UserOutlined
+    UserOutlined,
+     // Importando o ícone de lupa
   },
   data() {
     return {
-      searchInput: "",
       user: {
         avatar: '',
         name: "Victor Polito",
@@ -69,8 +71,7 @@ export default {
 <style scoped>
 .header {
   background-color: #F6F7F9;
-  color: white;
-  padding: 16px;
+  padding: 16px 5% 16px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,6 +94,14 @@ export default {
 .user-details {
   display: flex;
   flex-direction: column;
+}
+
+.user-details-name {
+  color: #2A2A35; /* Adicionando a cor para o título de usuário */
+}
+
+.user-details-email {
+  color: #9CA3AD; /* Adicionando a cor para o email de usuário */
 }
 
 .gutter-box {

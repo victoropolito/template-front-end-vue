@@ -2,7 +2,13 @@
   <a-layout>
     <HomeHeader />
     <Board />
-    <a-layout-content style="padding: 24px 40px">
+    <!-- <Login /> -->
+    <!-- <div>
+      <a-button type="primary">
+        <router-link to="./login">Login</router-link>
+      </a-button>
+    </div> -->
+    <a-layout-content class="card-list-board">
       <div>
         <cards-list @card-updated="fetchCards"/>
       </div>
@@ -14,12 +20,14 @@
 import HomeHeader from "./HomeHeader.vue"
 import Board from "./Board.vue"
 import CardsList from '@/components/CardsList.vue'
+// import Login from '@/views/login/Login.vue'
 
 export default {
   components: {
     HomeHeader,
     Board,
-    CardsList
+    CardsList,
+    // Login
   },
   methods: {
     fetchCards() {
@@ -29,3 +37,11 @@ export default {
   },
 }
 </script>
+
+<style>
+.card-list-board {
+  padding: 24px 40px; 
+  background-color: #F6F7F9;
+}
+
+</style>

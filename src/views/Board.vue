@@ -1,5 +1,5 @@
 <template>
-  <div class="components-page-header-demo-responsive" style="border: 1px solid rgb(235, 237, 240)">
+  <div class="components-page-header-demo-responsive">
     <a-page-header title="Chameleon Stack" @back="redirectPage">
       <template #extra>
         <Modal/>
@@ -7,7 +7,7 @@
       <template #footer>
         <a-tabs>
           <a-tab-pane key="1" tab="Filtrar" />
-          <a-tab-pane key="2" tab="Ordenar" />
+          <!-- <a-tab-pane key="2" tab="Ordenar" /> -->
         </a-tabs>
       </template>
     </a-page-header>
@@ -33,6 +33,8 @@ export default {
 <style scoped>
 .components-page-header-demo-responsive {
   padding-bottom: 20px;
+  border: 1px solid rgb(235, 237, 240);
+  background-color: #F6F7F9;
 }
 .components-page-header-demo-responsive tr:last-child td {
   padding-bottom: 0;

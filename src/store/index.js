@@ -52,5 +52,15 @@ export default createStore({
         throw error;
       }
     },
+    updateCardsOrder({ commit }, updatedCards) {
+      try {
+        // Atualize a ordem dos cards no servidor (se necessário)
+        // e emita a mutação para atualizar o estado local
+        commit('setCards', updatedCards);
+      } catch (error) {
+        console.error('Error updating cards order:', error);
+        throw error;
+      }
+    },
   },
 });
