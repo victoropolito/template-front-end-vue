@@ -70,9 +70,6 @@ export default {
       this.form = formObject;
       console.log(this.form);
     },
-    teste() {
-      console.log(this.card)
-    }
   },
 };
 </script>

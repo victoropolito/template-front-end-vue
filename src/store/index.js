@@ -23,6 +23,15 @@ export default createStore({
     },
   },
   actions: {
+    async fetchCardsAction({ commit }, userId) {
+      try {
+        const response = await api.get(`/card/${userId}`)
+        commit('setCards', response.data)
+      } catch (error) {
+        console.error('Error fetching cards:', error)
+        throw error
+      }
+    },
     async createCardStore({ commit }, { userId, cardForm}) {
       try {
         const response = await api.post(`/card/${userId}`, cardForm);

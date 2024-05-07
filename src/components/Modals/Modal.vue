@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async createCard() {
-      const user_id = "87898254-f9a5-4dd2-88c9-3d58c50a029b";
+      const user_id = "38707151-0338-4edb-bdf8-99c58512ab3e";
       
       try {
         await this.$store.dispatch('createCardStore', { userId: user_id, cardForm: this.form });
