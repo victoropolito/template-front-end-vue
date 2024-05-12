@@ -31,7 +31,6 @@ export default {
     return {
       open: false,
       confirmLoading: false,
-      form: {},
     }
   },
   methods: {
@@ -59,8 +58,6 @@ export default {
       } catch (error) {
         console.error(error);
       }
-
-      console.log("Excluiu!", this.form);
     },
   }
 }

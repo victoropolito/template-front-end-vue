@@ -68,7 +68,6 @@ export default {
         return;
       }
       this.form = formObject;
-      console.log(this.form);
     },
   },
 };

@@ -55,7 +55,6 @@ export default {
       }
       this.form.title = ''
       this.form.description = ''
-      console.log('Saved!', this.form);
     },
     changeForm(formObject) {
       if (formObject.type === "change") {
