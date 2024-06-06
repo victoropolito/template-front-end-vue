@@ -22,7 +22,6 @@
           <a-select-option value="melhoria">
             Melhoria
           </a-select-option>
-          <!-- Adicione mais opções, se necessário -->
         </a-select>
       </a-form-item>
       <a-form-item label="Responsável">

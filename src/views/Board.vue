@@ -7,7 +7,6 @@
       <template #footer>
         <a-tabs>
           <a-tab-pane key="1" tab="Filtrar" />
-          <!-- <a-tab-pane key="2" tab="Ordenar" /> -->
         </a-tabs>
       </template>
     </a-page-header>

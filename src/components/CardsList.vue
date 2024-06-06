@@ -109,7 +109,7 @@ export default {
   methods: {
     async fetchCards() {
       try {
-        await this.$store.dispatch('fetchCardsAction', '9d874262-ccd7-41aa-ab38-5446fd164ba3')
+        await this.$store.dispatch('fetchCardsAction', '664270c9472c3c191f2576e1')
       } catch (error) {
         console.log(error)
       }
@@ -128,11 +128,10 @@ export default {
 }
 
 .column {
-  background-color: white; /* Adicionando cor de fundo branco */
-  border-radius: 5px; /* Arredondando as bordas */
-  padding: 10px; /* Adicionando espaço interno */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adicionando uma leve sombra */
-  margin: 10px; /* Adicionando margem entre as colunas */
+  background-color: white; 
+  border-radius: 5px;
+  padding: 10px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin: 10px; 
 }
-
 </style>

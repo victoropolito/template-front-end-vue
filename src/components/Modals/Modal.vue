@@ -7,7 +7,7 @@
       :ok-button-props="{disabled: !formValid}"
       @ok="handleOk"
     >
-      <create-issue-form @change="changeForm" :formValid="formValid" /> <!-- Passando o estado de validade do formulário para o componente filho -->
+      <create-issue-form @change="changeForm" :formValid="formValid" />
     </a-modal>
   </div>
 </template>
