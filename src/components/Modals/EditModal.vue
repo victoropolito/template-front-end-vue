@@ -9,15 +9,15 @@
       @ok="handleOk"
       title="Editar Card"
     >
-      <EditIssueForm @change="changeForm" v-bind:card="card"/>
+      <EditIssueForm @change="changeForm" :card="card"/>
     </a-modal>
   </a-space>
 </template>
 
 <script>
-// import api from "@/services/api.js";
 import EditIssueForm from "@/components/Project/Issue/EditIssueForm.vue";
 import { EllipsisOutlined } from "@ant-design/icons-vue";
+import { mapState } from 'vuex';
 
 export default {
   props: {
@@ -36,12 +36,18 @@ export default {
       form: {},
     }
   },
+  computed: {
+    ...mapState(['user']),
+    userId() {
+      return this.user.id;
+    }
+  },
   methods: {
     async editCard() {
       const id = this.card.id;
 
       try {
-        await this.$store.dispatch('editCard', { cardId: id, updatedCardData: this.form });
+        await this.$store.dispatch('editCard', { cardId: id, updatedCardData: { ...this.form, user_id: this.userId } });
         return true;
       } catch (error) {
         console.error('Error editing card:', error);
@@ -60,7 +66,8 @@ export default {
         this.open = false;
         this.$emit('card-updated');
       } catch (error) {
-        console.error('Error editing/deleting card:', error);
+        console.error('Error editing card:', error);
+        this.confirmLoading = false;
       }
     },
     changeForm(formObject) {
@@ -70,5 +77,5 @@ export default {
       this.form = formObject;
     },
   },
-};
+}
 </script>

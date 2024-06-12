@@ -19,12 +19,6 @@ import Modal from '@/components/Modals/Modal.vue'
 export default {
   components: {
     Modal
-  },
-  methods: {
-    redirectPage() {
-      // () => $router.go(-1)
-      console.log('voltou')
-    }
   }
 }
 </script>

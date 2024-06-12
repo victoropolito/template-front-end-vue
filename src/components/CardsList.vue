@@ -6,13 +6,13 @@
           <template #extra>
             {{ filteredCards('BACKLOG').length }}
           </template>
-          <a-card v-for="card in cards" :key="card.id" :bordered="false" size="small">
-            <a-card v-if="card.status === 'BACKLOG'" hoverable >
+          <a-card v-for="card in filteredCards('BACKLOG')" :key="card.id" :bordered="false" size="small">
+            <a-card hoverable>
               <template #actions>
-                <EditModal v-bind:card="card"/>
-                <DeleteModal v-bind:card="card"/>
+                <EditModal v-bind:card="card" @card-updated="fetchCards"/>
+                <DeleteModal v-bind:card="card" @card-deleted="fetchCards"/>
               </template>
-              <a-card-meta >
+              <a-card-meta>
                 <template #title>
                   {{ card.title }}
                 </template>
@@ -34,13 +34,13 @@
           <template #extra>
             {{ filteredCards('IN PROGRESS').length }}
           </template>
-          <a-card v-for="card in cards" :key="card.id" :bordered="false" size="small">
-            <a-card v-if="card.status === 'IN PROGRESS'" hoverable>
+          <a-card v-for="card in filteredCards('IN PROGRESS')" :key="card.id" :bordered="false" size="small">
+            <a-card hoverable>
               <template #actions>
-                <EditModal v-bind:card="card" />
-                <DeleteModal v-bind:card="card"/>
+                <EditModal v-bind:card="card" @card-updated="fetchCards"/>
+                <DeleteModal v-bind:card="card" @card-deleted="fetchCards"/>
               </template>
-              <a-card-meta >
+              <a-card-meta>
                 <template #title>
                   {{ card.title }}
                 </template>
@@ -62,13 +62,13 @@
           <template #extra>
             {{ filteredCards('COMPLETED').length }}
           </template>
-          <a-card v-for="card in cards" :key="card.id" :bordered="false" size="small">
-            <a-card v-if="card.status === 'COMPLETED'" hoverable>
+          <a-card v-for="card in filteredCards('COMPLETED')" :key="card.id" :bordered="false" size="small">
+            <a-card hoverable>
               <template #actions>
-                <EditModal v-bind:card="card" />
-                <DeleteModal v-bind:card="card"/>
+                <EditModal v-bind:card="card" @card-updated="fetchCards"/>
+                <DeleteModal v-bind:card="card" @card-deleted="fetchCards"/>
               </template>
-              <a-card-meta >
+              <a-card-meta>
                 <template #title>
                   {{ card.title }}
                 </template>
